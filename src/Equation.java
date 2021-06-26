@@ -241,7 +241,7 @@ public class Equation extends EquationStack<String> {
         postfix="";
         postList.clear();
         String mother=precedence1+precedence2+precedence3;
-        String s = "";
+        //String s = "";
         EquationStack<String> postStack = new EquationStack<String>();
 //      char[] charArr = equation.toCharArray();
         String q=null;
@@ -484,134 +484,45 @@ public class Equation extends EquationStack<String> {
         double decimalvalue =  decimalAnswer();
         int temp3=0;
         int intPart=0;
-        double decimalPart;
+        int rem=0;
+        double decimalPart=0;
         intPart = (int)decimalvalue;
         decimalPart = decimalvalue-intPart;
-        EquationStack<String> str1 = new EquationStack<String>();
-        while(intPart>=1){
-            if(intPart%16<10){
-                str1.push(Integer.toString((int)intPart%16));
-                intPart  = (int)intPart/16;
-            }
 
-            else if(intPart%16>=10 && intPart%16<=15){
-                temp3=(int)intPart%16;
 
-                switch(temp3) {
-                    case 10:
-                        str1.push("A");
-                        break;
-                    case 11:
-                        str1.push ("B");
-                        break;
-                    case 12:
-                        str1.push("C");
-                        break;
-                    case 13:
-                        str1.push("D");
-                        break;
-                    case 14:
-                        str1.push("E");
-                        break;
-                    case 15:
-                        str1.push("F");
-                        break;
-                    default:
-                        break;
-                }
-                decimalvalue=(double)(int)decimalvalue/16;
-
-            }
+        char hexchars[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'};
+        while(intPart>0)
+        {
+            rem=intPart%16;
+            hex=hexchars[rem]+hex;
+            intPart=intPart/16;
         }
 
-   /* public String hexaDecimal(){
-        hex="";
-        double decimalvalue = decimalAnswer();
-        double temp3;
-        EquationStack<String> a = new EquationStack<String>();
-        while(decimalvalue>=1){
-            if(decimalvalue%16<10){
-                a.push(Integer.toString((int)decimalvalue%16));
-                decimalvalue=(double)(int)decimalvalue/16;
-            }
 
-            else if(decimalvalue%16>=10 && decimalvalue%16<=15){
-                int hex=(int)decimalvalue%16;
-
-                switch(hex) {
-                    case 10:
-                        a.push("A");
-                        break;
-                    case 11:
-                        a.push ("B");
-                        break;
-                    case 12:
-                        a.push("c");
-                        break;
-                    case 13:
-                        a.push("D");
-                        break;
-                    case 14:
-                        a.push("E");
-                        break;
-                    case 15:
-                        a.push("F");
-                        break;
-                    default:
-                        break;
-                }
-                decimalvalue=(double)(int)decimalvalue/16;
-
-            }
-        } */
-
-        while(str1.isEmpty()==false){
-            hex=hex+str1.pop();
-        }
 
         int intTemp=0;
         int swi=0;
         double newDecVal=0;
+
 if(decimalPart !=0 ){
-    hex=hex+".";
+    hex = hex + ".";
     intTemp = (int)(decimalPart*16);
     newDecVal = decimalPart*16-(int)(decimalPart*16);
 
-
     int i=0;
-    while(newDecVal>0 && i<3 ){
+    int multiple;
+    double decimalmul=0;
+
+    while(decimalPart!=0 && i<3)
+    {
+        decimalmul = decimalPart*16;
+        multiple = (int)decimalmul;
+        System.out.println(multiple);
+        hex=hex + hexchars[multiple];
+        decimalPart = decimalmul-multiple;
         i++;
-        if(intTemp<10){
-            hex = hex + Integer.toString(intTemp);
-        }
-
-        else if(intTemp>=10 && intTemp<=15){
-
-            switch(intTemp) {
-                case 10:
-                    hex=hex+"A";
-                    break;
-                case 11:
-                    hex=hex+"B";
-                    break;
-                case 12:
-                    hex=hex+"C";
-                    break;
-                case 13:
-                    hex=hex+"D";
-                    break;
-                case 14:
-                    hex=hex+"E";
-                    break;
-                case 15:
-                    hex=hex+"F";
-                    break;
-                default:
-                    break;
-            } }
-        intTemp = (int)(decimalPart*16);
-        newDecVal = decimalPart*16-intTemp;
     }
+
 }
         //System.out.println("hex= :" + hex);
         return hex;

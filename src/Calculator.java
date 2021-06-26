@@ -18,7 +18,8 @@ public class Calculator {
         //obj1.scanOperand();
         //obj1.decimalAnswer();
         //System.out.println("infix: "+ obj1.getEquation()+ " to postfix: " + obj1.inToPost() + " expected output : abcd^e-fgh*+^*+i-" + "Decimal Answer is: " + obj1.decimalAnswer() + " hexadecimal value : " + obj1.hexaDecimal()  +" Array List Value" +  obj1.getPostList()  );
-        System.out.println("infix: "+ " to postfix: " +  " expected output : abcd^e-fgh*+^*+i-" + "Decimal Answer is: " + obj1.decimalAnswer() + " hexadecimal value : " + obj1.hexaDecimal()  +" Array List Value" +  obj1.getPostList()  );
+        System.out.println("infix: "+ " to postfix: " +  " expected output : abcd^e-fgh*+^*+i-" + "Decimal Answer is: " + obj1.decimalAnswer() + " hexadecimal value : "  +" Array List Value" +  obj1.getPostList()  );
+        System.out.println("Hexadecimal = " + obj1.hexaDecimal());
 
 
         //+obj1.hexaDecimal()
