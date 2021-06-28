@@ -436,10 +436,11 @@ public class Equation extends EquationStack<String> {
             //q = Character.toString(c);
             //a.equals("+")==false && a.equals("-") == false && a.equals("*") == false && a.equals("/") ==false && a.equals("^") == false && a.equals("(") == false && a.equals(")") == false
             //System.out.println("I am in 2");
+
             if(a.equals("+")==false && a.equals("-") == false && a.equals("*") == false && a.equals("/") ==false && a.equals("^") == false){
                 //System.out.println("I am in 2");
+                sum=Double.parseDouble(a);
                 dec.push(a);
-
             }
 
 
