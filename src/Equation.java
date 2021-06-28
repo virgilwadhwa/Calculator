@@ -404,8 +404,8 @@ public class Equation extends EquationStack<String> {
                 if(s!=""){
                     operandBank.add(s);
                 }
-                s="";
                 operandBank.add(Character.toString(c));
+                s="";
             }
 /*
             else{
@@ -415,7 +415,9 @@ public class Equation extends EquationStack<String> {
                 s="";
             }*/
         }
-        operandBank.add(s);
+        if(s!=""){
+            operandBank.add(s);
+        }
         //System.out.println(operandBank);
         return operandBank;
     }
