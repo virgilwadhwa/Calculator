@@ -24,7 +24,6 @@ public class Equation extends EquationStack<String> {
 
     public void setEquation(String equation) {
         this.equation = equation;
-
     }
 
     public ArrayList<String> getPostList(){
@@ -86,37 +85,30 @@ public class Equation extends EquationStack<String> {
     }
 
     public boolean isBalanced() {
-       /* int countleft_parenthesis=0;
-        int right_parenthesis=0;
-        char[] a = equation.toCharArray();
-        for(char c : a){
-            if(c=='('){
-                countleft_parenthesis = countleft_parenthesis+1;
-            }
-
-            if(c==')'){
-                right_parenthesis=right_parenthesis+1;
-            }
-        }
-
-        if(countleft_parenthesis==right_parenthesis){
-            return true;
-        }
-        else{
-        return false;} */
-
         char[] charArr = equation.toCharArray();
         EquationStack<String> obj1 = new EquationStack<String>();
+        //Stack<Character> operatorStack = new Stack<Character>();
+        ArrayList<Character> operatorAray = new ArrayList<Character>();
+        int i=0;
         for (char c : charArr) {
+            operatorAray.add(c);
+            if(c== '+' || c=='-' || c=='/' || c=='*' || c=='^' ){
+                if(i>0){
+                    if(operatorAray.get(i-1)=='+' || operatorAray.get(i-1)=='-' || operatorAray.get(i-1)=='/' || operatorAray.get(i-1)=='*' || operatorAray.get(i-1)=='^'){
+                        return false;
+                    }
+                }
+
+            }
             if (c == '(' || c == '{' || c == '[') {
-                System.out.println("Object pushed");
+                //System.out.println("Object pushed");
                 obj1.push(Character.toString(c));
             } else if (c == ')' || c == '}' || c == ']') {
                 //System.out.println(obj1.peek());
                 //System.out.println(obj1.peek().equals(Character.toString('(')));
 
                 if (obj1.isEmpty() == true) {
-                    System.out.println("the first case ran");
+                    //System.out.println("the first case ran");
                     return false;
                 } else if (obj1.peek().equals(Character.toString('(')) && c != ')') {
                     //System.out.println("the 2nd case ran");
@@ -131,7 +123,11 @@ public class Equation extends EquationStack<String> {
                 }
 
             }
-
+            i++;
+        }
+        i=i-1;
+        if(operatorAray.get(i)=='+' || operatorAray.get(i)=='-' || operatorAray.get(i)=='/' || operatorAray.get(i)=='*' || operatorAray.get(i)=='^'){
+            return false;
         }
         if (obj1.isEmpty() == false) {
             //System.out.println("Last case ran");
@@ -238,6 +234,8 @@ public class Equation extends EquationStack<String> {
     }
 
     public String inToPost(){
+
+
         postfix="";
         postList.clear();
         String mother=precedence1+precedence2+precedence3;
@@ -480,6 +478,7 @@ public class Equation extends EquationStack<String> {
 
 
     public String hexaDecimal(){
+        decimalAnswer();
         hex="";
         double decimalvalue =  decimalAnswer();
         int temp3=0;
@@ -519,7 +518,7 @@ if(decimalPart !=0 ){
         multiple = (int)decimalmul;
         System.out.println(multiple);
         hex=hex + hexchars[multiple];
-        decimalPart = decimalmul-multiple;
+        decimalPart = decimalmul - multiple;
         i++;
     }
 
