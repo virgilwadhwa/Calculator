@@ -24,7 +24,6 @@ public class Equation extends EquationStack<String> {
 
     public void setEquation(String equation) {
         this.equation = equation;
-
     }
 
     public ArrayList<String> getPostList(){
@@ -109,7 +108,7 @@ public class Equation extends EquationStack<String> {
         EquationStack<String> obj1 = new EquationStack<String>();
         for (char c : charArr) {
             if (c == '(' || c == '{' || c == '[') {
-                System.out.println("Object pushed");
+                //System.out.println("Object pushed");
                 obj1.push(Character.toString(c));
             } else if (c == ')' || c == '}' || c == ']') {
                 //System.out.println(obj1.peek());
@@ -238,6 +237,8 @@ public class Equation extends EquationStack<String> {
     }
 
     public String inToPost(){
+
+
         postfix="";
         postList.clear();
         String mother=precedence1+precedence2+precedence3;
@@ -480,6 +481,7 @@ public class Equation extends EquationStack<String> {
 
 
     public String hexaDecimal(){
+        decimalAnswer();
         hex="";
         double decimalvalue =  decimalAnswer();
         int temp3=0;
@@ -519,7 +521,7 @@ if(decimalPart !=0 ){
         multiple = (int)decimalmul;
         System.out.println(multiple);
         hex=hex + hexchars[multiple];
-        decimalPart = decimalmul-multiple;
+        decimalPart = decimalmul - multiple;
         i++;
     }
 
